@@ -1,5 +1,5 @@
 public class myException2Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws myException2{
     
     int num = 12;
 
