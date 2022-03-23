@@ -1,4 +1,6 @@
-public class ball {
+import java.io.Serializable;
+
+public class ball implements Serializable{
     
     String color;
     int size;
