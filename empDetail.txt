@@ -1,0 +1,1 @@
+empDetail [name=Rahul, role=testing, salary=67000, state=karnataka]
