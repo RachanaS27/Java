@@ -1,30 +1,23 @@
 package Assignments;
 
-public class circle implements printable,sortable{
+public class sortInterface implements sortable{
 
-    int radius;
-    int diameter;
-    String color;
-
-    public circle() {
+    int[] num;
+    public sortInterface(int[] num)
+    {
+        this.num = num;
+    }
+    public static void main(String[] args) {
+        int[] n1 = {3,2,5,1,4};
+        sortInterface si = new sortInterface(n1);
+        si.sortAll();
     }
 
-    public circle(int radius, int diameter, String color) {
-        this.radius = radius;
-        this.diameter = diameter;
-        this.color = color;
-    }
-
-    @Override
-    public void print() {
-        System.out.println("Circle class print method"); 
-        System.out.println(this.radius+" "+this.diameter+" "+this.color);       
-    }
 
     @Override
     public void sortAll() {
-        int[] num = {3,2,5,1,4};
         int temp;
+       
         for(int i=0;i<num.length;i++)
         {
             for(int j=0;j<num.length - 1;j++)
@@ -41,5 +34,7 @@ public class circle implements printable,sortable{
             System.out.println(num[i]);
         }
     }
-    
+        
 }
+    
+
