@@ -6,11 +6,13 @@ public static void main(String[] args) {
 
        try {
         t2.start();
+        t1.start();
+        t1.join();
+        t1.isDaemon();
         System.out.println("t1 is alive : "+ t1.isAlive()+" t2 is alive : "+ t2.isAlive());
         Thread.sleep(1000);
         System.out.println("t1 state "+t1.getState()+" t2 state "+t2.getState()); 
-        t1.join();
-        t1.start();
+       System.out.println( Thread.currentThread());
         String name1 = t1.getName();
         String name2 = t2.getName();
         System.out.println(" t1 name "+name1+" t2 name "+name2);
