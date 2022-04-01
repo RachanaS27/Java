@@ -1,6 +1,8 @@
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ball implements Serializable{
+public class ball implements Serializable,Comparable<ball>{
     
     String color;
     int size;
@@ -9,6 +11,7 @@ public class ball implements Serializable{
 
 
     static ball b1 = new ball("White", 180, "Rubber", "Football");
+    static ball b2 = new ball("Red", 80, "Leather", "Cricket");
 
     public ball() {
     }
@@ -52,7 +55,6 @@ public class ball implements Serializable{
 
     public static void main(String[] args) {
         
-        ball b2 = new ball("Red", 80, "Leather", "Cricket");
         System.out.println(b1);
         System.out.println(b2);
         b1.setColor("Yellow");
@@ -61,6 +63,26 @@ public class ball implements Serializable{
         System.out.println( b1.getGame());
         System.out.println(b1);
         System.out.println(b2);
+       new ball().sortAll();
+
+    }
+    public void sortAll()
+    {
+        System.out.println("Invoked sort in comparable");
+        List<ball> list1 = new ArrayList<>();
+        list1.add(b1);
+        list1.add(b2);
+        System.out.println(b1.compareTo(b2));
+        list1.forEach(System.out::println);
+    }
+
+    @Override
+    public int compareTo(ball b2) {
+        if(b1.size < b2.size)
+        {
+            return -1;
+        }
+        return 0;
     }
 
     
