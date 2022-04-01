@@ -76,14 +76,14 @@ public class employeeDAO {
         return model;
     }
 
-    private void loadData(List<employeeDto> list2) {
+    public void loadData(List<employeeDto> list2) {
         try {
             FileReader reader = new FileReader(new File("employeeManagementSys/fileStore.txt"));
             BufferedReader br = new BufferedReader(reader);
 
             while (br.read() != -1) {
                 String d = br.readLine();
-                d = d.substring(15, d.length() - 1);
+                d = d.substring(12, d.length() - 1);
                 employeeDto model = destructureString(Arrays.asList(d.split(", ")));
 
                 list2.add(model);
@@ -147,26 +147,28 @@ public class employeeDAO {
 
     public String deleteEmployee(String id){
         try {
-            File file = new File("employeeManagementSys/fileStore.txt");
-            FileWriter writer = new FileWriter(file);
-            for (employeeDto e : list) {      
+            for (employeeDto e : list) {
                 if (e.getId().equals(id)) {
-                    System.out.println(e.getId()+" "+id);
                     list.remove(e);
-                    String d =list.toString();
-                    writer.append(d);
-                }else{
-                    System.out.println("hello");
-                    String d =e.toString();
-                    System.out.println(d);
-                    writer.append(d);
+                    FileWriter writer = new FileWriter(new File("employeeManagementSys/fileStore.txt"));
+                    String data = list.toString();
+                    String d1 = data.substring(1, data.length()-1);
+                    String[] d2 = d1.split("employeeDto ");
+                    for (String string : d2) {
+                       System.out.println(string);
+                        writer.append(string);
+                    }
+                   
+
+                    writer.close();
+                    return "Deleted Employee with Id=" + id;
                 }
             }
-            writer.close();
-            return "Deleted Employee with Id=" + id;
         } catch (Exception e) {
-            return e.getMessage();
+            System.out.println(e.getMessage());
         }
+        return "Id is incorrect";
+
 
     }
 

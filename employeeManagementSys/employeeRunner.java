@@ -7,14 +7,10 @@ import java.util.stream.Collectors;
 public class employeeRunner {
    static Scanner scan = new Scanner(System.in);
    static Scanner scan1 = new Scanner(System.in);
-
+   static List<employeeDto> l1 = employeeDAO.getList1();
    
     public static void main(String[] args) {
         employeeDAO empDAO = new employeeDAO();
-
-        List<employeeDto> l1 = employeeDAO.getList1();
-        
-
 
         while(true)
         {
@@ -26,7 +22,8 @@ public class employeeRunner {
             System.out.println("4. Delete employees");
             System.out.println("5. group employee by role");
             System.out.println("6. partition employee by salary");
-            System.out.println("7. Exit");
+            System.out.println("7. load data from file");
+            System.out.println("8. Exit");
 
             userChoice= scan.nextInt();
             switch(userChoice)
@@ -77,7 +74,11 @@ public class employeeRunner {
                         });
                         break;
 
-                case 7:System.out.println("Thank you for using Employee Management System");
+                case 7: List<employeeDto> l2 = employeeDAO.getList1();
+                        new employeeDAO().loadData(l2);
+                        break;
+
+                case 8:System.out.println("Thank you for using Employee Management System");
                         scan.close();
                         System.exit(0);
                         break;
