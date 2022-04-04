@@ -3,13 +3,16 @@ import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
 public class pipeEx {
-   public static void main(String[] args) {
-       try {
+   public static void main(String[] args) throws InterruptedException {
+    char ch[] = {'a','b','s'};   
+    try {
            PipedInputStream pi = new PipedInputStream();
            PipedOutputStream po = new PipedOutputStream();
            po.connect(pi);
-           po.write(68);
-           System.out.println((char)pi.read());  
+           for(int i=0;i<ch.length;i++){
+           po.write(ch[i]);
+           System.out.println((char)pi.read()); 
+           } 
            pi.close();
            po.close();      
        } catch (IOException e) {

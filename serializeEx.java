@@ -8,7 +8,7 @@ public class serializeEx {
             ball b1 =  new ball("yellow", 80, "rubber", "tennis");
             FileOutputStream fo = new FileOutputStream("Names.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fo);
-            oos.writeObject(b1);
+            oos.writeObject(b1.toString());
             oos.flush();
             oos.close();
             fo.close();
